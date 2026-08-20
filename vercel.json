@@ -5,4 +5,8 @@
       "destination": "/api/index"
     }
   ]
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 7496e8ce (Fix Vercel FastAPI routing)
