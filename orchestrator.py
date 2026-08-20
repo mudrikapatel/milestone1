@@ -127,3 +127,5 @@ def analyze_bug(filepath):
         "similar_bugs": similar
 
     }
+    def analyze_bug(filepath):
+        return analyze(filepath)
