@@ -1,0 +1,21 @@
+Bug ID: BUG-005
+Title: Duplicate Detection Failed
+Module: RAG Pipeline
+Severity: Medium
+
+Description:
+This issue was observed during testing of the RAG Pipeline module.
+
+Steps to Reproduce:
+1. Open the application
+2. Navigate to RAG Pipeline
+3. Perform the related action
+
+Expected Result:
+Feature should work correctly.
+
+Actual Result:
+The operation failed.
+
+Error:
+Embedding similarity returned 0%

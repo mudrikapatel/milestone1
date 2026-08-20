@@ -1,0 +1,9 @@
+id,title,category,component,severity,root_cause,status,date
+BUG-001,NullPointerException in UserService,Runtime,UserService,HIGH,Missing null validation,resolved,2026-07-22
+BUG-002,Database connection timeout,Database,DatabaseService,HIGH,Connection pool exhaustion,resolved,2026-07-23
+BUG-003,Payment API 500 error,API,PaymentService,HIGH,Unhandled server exception,resolved,2026-07-24
+BUG-004,JWT authentication failure,Authentication,AuthService,MEDIUM,Expired authentication token,resolved,2026-07-26
+BUG-005,File processing failure,IO,FileProcessor,MEDIUM,Missing file validation,resolved,2026-07-28
+BUG-006,NullPointerException in OrderService,Runtime,OrderService,HIGH,Missing null validation,open,2026-07-29
+BUG-007,Database connection timeout,Database,DatabaseService,HIGH,Connection pool exhaustion,resolved,2026-07-30
+BUG-008,Invalid API response,API,PaymentService,MEDIUM,Unhandled server exception,open,2026-07-31

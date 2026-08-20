@@ -1,0 +1,21 @@
+Bug ID: BUG-011
+Title: Log File Parsing Failed
+Module: Parser
+Severity: Medium
+
+Description:
+This issue was observed during testing of the Parser module.
+
+Steps to Reproduce:
+1. Open the application
+2. Navigate to Parser
+3. Perform the related action
+
+Expected Result:
+Feature should work correctly.
+
+Actual Result:
+The operation failed.
+
+Error:
+ValueError: Invalid log format

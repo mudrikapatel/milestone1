@@ -1,0 +1,77 @@
+# End-to-End Testing Report
+
+## Project
+
+Creation of Intelligent Bug Diagnosis Platform with Fix Recommendation Assistance - Group 1
+
+## Objective
+
+The objective of testing is to verify that the complete multi-agent pipeline can process different bug reports and produce structured findings.
+
+## Test Cases
+
+| ID | Bug Type | Stack Format | Expected Validation |
+|---|---|---|---|
+| TC01 | Null Pointer | Java | Exception, failure point, root cause, remediation |
+| TC02 | Database Failure | SQL/Database | Error detection and remediation |
+| TC03 | Key Error | Python | Python traceback parsing |
+| TC04 | Network Timeout | Java | Timeout detection |
+| TC05 | Memory Failure | Java | OutOfMemoryError detection |
+
+## Agents Tested
+
+- Triage Agent
+- Log Analysis Agent
+- Root Cause Agent
+- Duplicate Detection Agent
+- Remediation Agent
+- RAG Retrieval
+- Knowledge Base Growth
+
+## Metrics
+
+### Pipeline Completion Rate
+
+Percentage of test cases producing all required output sections.
+
+### Log Detection Rate
+
+Percentage of test cases where an exception or error was successfully detected.
+
+### Failure Point Detection Rate
+
+Percentage of stack traces where a failure point was identified.
+
+### Root Cause Availability
+
+Percentage of test cases producing a root cause hypothesis.
+
+### Remediation Availability
+
+Percentage of test cases producing at least one recommended fix.
+
+### Duplicate Detection
+
+Number of historical bugs returned as semantic matches.
+
+## Important Note
+
+The automated test script calculates engineering validation metrics. These should not be interpreted as scientific model accuracy unless manually labelled ground-truth data is available.
+
+## Observations
+
+The test suite covers:
+
+1. Java exception format.
+2. Python traceback format.
+3. Database-related errors.
+4. Network timeout failures.
+5. Memory-related failures.
+
+The system is therefore tested against varied bug types and stack trace formats.
+
+## Result
+
+The detailed automated result is stored in:
+
+test_results.json

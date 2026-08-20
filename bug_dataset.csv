@@ -1,0 +1,16 @@
+Bug_ID,Title,Description,Severity,Priority,Component,Root_Cause,Suggested_Fix
+BUG101,Login Crash,Application crashes after login due to NullPointerException,Critical,P1,Authentication,Null object reference,Initialize object and add null checks
+BUG102,Database Connection Failed,Unable to connect to MySQL database,High,P2,Database,Database server unavailable,Verify database server and credentials
+BUG103,API Timeout,API request timed out after 30 seconds,High,P2,API,Slow backend response,Optimize API and increase timeout
+BUG104,Button Misalignment,Submit button overlaps footer on mobile,Low,P4,Frontend,CSS issue,Fix responsive CSS
+BUG105,Memory Leak,System memory usage continuously increases,High,P2,Backend,Objects not released,Close resources properly
+BUG106,File Upload Failed,Uploaded PDF cannot be processed,Medium,P3,File Upload,Invalid file validation,Validate file type and size
+BUG107,Authentication Failed,User receives invalid credentials despite correct password,High,P2,Authentication,Incorrect password hashing,Update authentication logic
+BUG108,Page Not Found,Dashboard link returns 404 error,Medium,P3,Frontend,Wrong routing path,Correct route mapping
+BUG109,Null Pointer Exception,NullPointerException in PaymentService.java,Critical,P1,Payment,Null payment object,Add null validation
+BUG110,SQL Exception,SQLException while fetching user details,High,P2,Database,Invalid SQL query,Correct SQL query
+BUG111,Payment Failed,Payment gateway returns HTTP 500 error,Critical,P1,Payment,Gateway unavailable,Retry payment and handle server errors
+BUG112,Image Upload Error,Images larger than 5MB fail to upload,Medium,P3,File Upload,Upload size restriction,Increase upload limit
+BUG113,Session Expired,User logged out unexpectedly after inactivity,Medium,P3,Authentication,Session timeout,Increase session duration
+BUG114,Slow Dashboard,Dashboard loads in more than 20 seconds,Medium,P3,Backend,Slow database query,Optimize database queries
+BUG115,Email Not Sent,Password reset email not delivered,Medium,P3,Notification,SMTP configuration error,Verify SMTP settings

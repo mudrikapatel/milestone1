@@ -1,0 +1,21 @@
+Bug ID: BUG-019
+Title: Dashboard Metrics Incorrect
+Module: Analytics
+Severity: Low
+
+Description:
+This issue was observed during testing of the Analytics module.
+
+Steps to Reproduce:
+1. Open the application
+2. Navigate to Analytics
+3. Perform the related action
+
+Expected Result:
+Feature should work correctly.
+
+Actual Result:
+The operation failed.
+
+Error:
+Aggregation logic error

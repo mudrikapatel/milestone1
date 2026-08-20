@@ -1,0 +1,1084 @@
+# Agile Project Documentation
+
+## 1. Project Overview
+
+### Project Name
+
+**AI-Powered Defect Analysis and Resolution System**
+
+### Development Methodology
+
+**Agile / Iterative Development**
+
+### Project Objective
+
+The objective of this project is to develop an AI-assisted software defect analysis platform that accepts bug reports, stack traces, and error logs and automatically performs:
+
+* Bug triage
+* Log and exception analysis
+* Root-cause analysis
+* Historical defect retrieval
+* Duplicate defect detection
+* Remediation recommendation
+* Defect pattern analytics
+
+The system uses a **multi-agent architecture combined with Retrieval-Augmented Generation (RAG), semantic similarity, embeddings, and a historical defect knowledge base**.
+
+---
+
+# 2. Agile Development Approach
+
+The project follows an iterative Agile approach in which the system is developed incrementally through four milestones.
+
+Each milestone produces a usable increment of the system while also providing the foundation for the next milestone.
+
+```text
+                    PRODUCT BACKLOG
+                          │
+                          ▼
+                 ┌──────────────────┐
+                 │ Sprint Planning   │
+                 └────────┬─────────┘
+                          │
+                          ▼
+                    DEVELOPMENT
+                          │
+                          ▼
+                      TESTING
+                          │
+                          ▼
+                       REVIEW
+                          │
+                          ▼
+                    RETROSPECTIVE
+                          │
+                          ▼
+                  BACKLOG REFINEMENT
+                          │
+                          └──────────────► Next Sprint
+```
+
+The project prioritizes:
+
+* Working software
+* Incremental delivery
+* Continuous testing
+* Frequent validation
+* Modular development
+* Documentation alongside implementation
+* Feedback-driven improvement
+
+---
+
+# 3. Agile Roles
+
+| Role                               | Responsibility                                                          |
+| ---------------------------------- | ----------------------------------------------------------------------- |
+| Product Owner                      | Defines project requirements, priorities, and acceptance criteria       |
+| Scrum Master / Project Coordinator | Tracks progress, removes blockers, coordinates milestones               |
+| AI/Backend Developer               | Develops agents, RAG pipeline, APIs, and orchestration                  |
+| Frontend Developer                 | Develops submission and findings interfaces                             |
+| Data/ML Developer                  | Handles datasets, preprocessing, embeddings, similarity, and evaluation |
+| QA / Testing                       | Validates agents, APIs, retrieval, and end-to-end functionality         |
+| Documentation Lead                 | Maintains technical, Agile, architecture, and project documentation     |
+
+> Depending on team size, one person may perform multiple roles.
+
+---
+
+# 4. Product Vision
+
+### Vision Statement
+
+> Build an intelligent defect-analysis platform that assists software engineers in understanding bugs faster by combining multi-agent AI reasoning with historical defect knowledge.
+
+### Target Users
+
+* Software developers
+* QA engineers
+* DevOps engineers
+* Software maintenance teams
+* Technical support teams
+* Project and engineering teams
+
+### Expected Benefits
+
+* Reduce manual bug-analysis effort
+* Improve bug triage consistency
+* Accelerate log and stack-trace analysis
+* Reuse historical defect knowledge
+* Identify duplicate issues
+* Recommend evidence-based fixes
+* Detect recurring systemic problems
+
+---
+
+# 5. Product Backlog
+
+The following backlog represents the major functionality planned for the complete project.
+
+| ID    | Epic                | User Story                                                                                   | Priority |
+| ----- | ------------------- | -------------------------------------------------------------------------------------------- | -------- |
+| US-01 | Submission          | As a user, I want to paste a bug report so that I can submit a defect for analysis           | High     |
+| US-02 | Submission          | As a user, I want to upload a bug/log file so that large reports can be analyzed             | High     |
+| US-03 | Knowledge Base      | As a system, I want to ingest historical defects so that past defect knowledge can be reused | High     |
+| US-04 | Knowledge Base      | As a system, I want to generate embeddings so that defects can be searched semantically      | High     |
+| US-05 | Knowledge Base      | As a system, I want to retrieve relevant historical defects using RAG                        | High     |
+| US-06 | Triage              | As a user, I want the system to classify severity and priority automatically                 | High     |
+| US-07 | Log Analysis        | As a user, I want stack traces and errors to be analyzed automatically                       | High     |
+| US-08 | Orchestration       | As a system, I want agents to exchange outputs so that analysis can happen as a pipeline     | High     |
+| US-09 | Root Cause          | As a user, I want a probable root cause with evidence                                        | High     |
+| US-10 | Duplicate Detection | As a user, I want similar historical bugs identified                                         | High     |
+| US-11 | Remediation         | As a user, I want actionable recommendations for fixing the defect                           | High     |
+| US-12 | Findings            | As a user, I want all analysis results displayed in one interface                            | High     |
+| US-13 | Analytics           | As a user, I want recurring defect patterns identified                                       | Medium   |
+| US-14 | Knowledge Growth    | As a system, I want verified resolved bugs added to the knowledge base                       | Medium   |
+| US-15 | Testing             | As a team, we want to validate the system using multiple bug types                           | High     |
+| US-16 | Documentation       | As a team, we want complete technical and user documentation                                 | High     |
+
+---
+
+# 6. Epic Structure
+
+## Epic 1 — Bug Submission
+
+### Goal
+
+Provide a reliable entry point for bug reports, stack traces, and error logs.
+
+### Features
+
+* Text input
+* File upload
+* Input validation
+* File parsing
+* Error-log extraction
+* Submission storage
+
+### Acceptance Criteria
+
+* User can paste a bug report.
+* User can upload a supported file.
+* System validates the submission.
+* Submitted content is passed to the analysis pipeline.
+* Invalid input generates an appropriate error message.
+
+---
+
+# Epic 2 — Historical Defect Knowledge Base
+
+### Goal
+
+Create a searchable historical knowledge base using public defect datasets.
+
+### Data Sources
+
+Initial datasets will include historical defects from:
+
+* Mozilla
+* Apache
+* Eclipse
+
+### Features
+
+* Dataset collection
+* Data cleaning
+* Normalization
+* Text extraction
+* Chunking
+* Embedding generation
+* Metadata generation
+* Vector indexing
+* Semantic retrieval
+
+### Acceptance Criteria
+
+* Historical datasets are successfully imported.
+* Defect records are cleaned and normalized.
+* Text is divided into appropriate chunks.
+* Embeddings are generated.
+* Records are indexed in the vector database.
+* Relevant defects can be retrieved using a sample query.
+
+---
+
+# Epic 3 — Triage Agent
+
+### Goal
+
+Automatically classify incoming defects.
+
+### Outputs
+
+* Severity
+* Priority
+* Affected component
+* Confidence score
+* Reasoning
+
+### Acceptance Criteria
+
+Given a valid bug report, the system should return a structured triage result.
+
+Example:
+
+```json
+{
+  "severity": "High",
+  "priority": "P1",
+  "affected_component": "Authentication",
+  "confidence": 0.91,
+  "reasoning": "The defect prevents users from authenticating."
+}
+```
+
+---
+
+# Epic 4 — Log Analysis Agent
+
+### Goal
+
+Automatically analyze stack traces and error messages.
+
+### Outputs
+
+* Exception type
+* Error message
+* Failure point
+* Affected code path
+* Structured analysis
+* Confidence
+
+### Acceptance Criteria
+
+The system should:
+
+1. Identify the exception.
+2. Extract relevant error information.
+3. Identify the probable failure point.
+4. Identify the affected code path where possible.
+5. Return structured output.
+
+---
+
+# Epic 5 — Multi-Agent Orchestration
+
+### Goal
+
+Connect individual agents into a coordinated analysis pipeline.
+
+```text
+Bug Submission
+      │
+      ▼
+Preprocessing
+      │
+      ├──────────► Triage Agent
+      │
+      └──────────► Log Analysis Agent
+                         │
+                         ▼
+                  Combined Context
+                         │
+              ┌──────────┼──────────┐
+              ▼          ▼          ▼
+          Root Cause  Duplicate  Remediation
+              │          │          │
+              └──────────┼──────────┘
+                         ▼
+                Structured Findings
+```
+
+### Acceptance Criteria
+
+* Submission automatically triggers the required agents.
+* Triage output is available to downstream agents.
+* Log-analysis output is available to downstream agents.
+* Agent results are stored in a structured format.
+* Failures in one stage are handled appropriately.
+
+---
+
+# Epic 6 — Root Cause Agent
+
+### Goal
+
+Identify the most probable root cause using historical evidence.
+
+### Inputs
+
+* Original bug report
+* Triage results
+* Log analysis
+* Retrieved historical defects
+
+### Outputs
+
+* Root-cause hypothesis
+* Confidence score
+* Supporting evidence
+
+### Acceptance Criteria
+
+The agent must provide a root-cause hypothesis supported by retrieved historical information.
+
+---
+
+# Epic 7 — Duplicate Detection
+
+### Goal
+
+Identify existing or historically similar defects.
+
+### Features
+
+* Semantic embeddings
+* Similarity search
+* Top-K retrieval
+* Similarity scoring
+* Historical resolution extraction
+
+### Acceptance Criteria
+
+The system should return relevant similar defects and their similarity scores.
+
+Example:
+
+```text
+Match #1
+Historical Bug: BUG-1023
+Similarity: 0.92
+Resolution: Updated connection timeout handling
+```
+
+---
+
+# Epic 8 — Remediation Agent
+
+### Goal
+
+Provide actionable recommendations for resolving defects.
+
+### Inputs
+
+* Root-cause analysis
+* Historical resolutions
+* Similar defects
+* Engineering best practices
+
+### Outputs
+
+* Recommended fix
+* Supporting evidence
+* Implementation guidance
+* Confidence
+
+### Acceptance Criteria
+
+Recommendations should be relevant to the identified problem and grounded in available evidence.
+
+---
+
+# Epic 9 — Structured Findings Interface
+
+### Goal
+
+Provide users with a single view of the complete defect analysis.
+
+### Dashboard Sections
+
+```text
+┌──────────────────────────────────────────┐
+│             DEFECT ANALYSIS              │
+├──────────────────────────────────────────┤
+│ Severity: HIGH       Priority: P1        │
+│ Component: Database                      │
+├──────────────────────────────────────────┤
+│ LOG ANALYSIS                             │
+│ Exception: NullPointerException          │
+│ Failure Point: UserService.java:142      │
+├──────────────────────────────────────────┤
+│ ROOT CAUSE                               │
+│ Hypothesis + Confidence + Evidence       │
+├──────────────────────────────────────────┤
+│ SIMILAR / DUPLICATE DEFECTS              │
+│ Match 1 — 92%                            │
+│ Match 2 — 87%                            │
+├──────────────────────────────────────────┤
+│ RECOMMENDED REMEDIATION                  │
+│ Actionable fix recommendations           │
+└──────────────────────────────────────────┘
+```
+
+---
+
+# Epic 10 — Defect Pattern Analytics
+
+### Goal
+
+Identify systemic issues across submitted and historical defects.
+
+### Analytics
+
+* Defect frequency
+* Severity distribution
+* Component distribution
+* Root-cause distribution
+* Recurring bug themes
+* Resolution trends
+* Systemic issue patterns
+
+### Acceptance Criteria
+
+The dashboard should provide meaningful visualizations of defect trends and recurring issues.
+
+---
+
+# 7. Milestone-to-Sprint Plan
+
+## Milestone 1 — 30 June to 9 July
+
+### Sprint Goal
+
+**Establish the foundation of the system and build the initial RAG knowledge base.**
+
+### Sprint Backlog
+
+| Task   | Description                        | Priority |
+| ------ | ---------------------------------- | -------- |
+| M1-T1  | Research defect analysis workflows | High     |
+| M1-T2  | Research RAG architecture          | High     |
+| M1-T3  | Research semantic similarity       | High     |
+| M1-T4  | Research bug report structures     | High     |
+| M1-T5  | Design system architecture         | High     |
+| M1-T6  | Define agent responsibilities      | High     |
+| M1-T7  | Design orchestration flow          | High     |
+| M1-T8  | Design knowledge-base schema       | High     |
+| M1-T9  | Implement text-based submission    | High     |
+| M1-T10 | Implement file upload              | High     |
+| M1-T11 | Collect Mozilla dataset            | High     |
+| M1-T12 | Collect Apache dataset             | High     |
+| M1-T13 | Collect Eclipse dataset            | High     |
+| M1-T14 | Implement preprocessing            | High     |
+| M1-T15 | Implement chunking                 | High     |
+| M1-T16 | Generate embeddings                | High     |
+| M1-T17 | Configure vector database          | High     |
+| M1-T18 | Implement initial retrieval        | High     |
+| M1-T19 | Prepare design documentation       | High     |
+| M1-T20 | Prepare GitHub repository          | High     |
+
+### Definition of Done
+
+Milestone 1 is complete when:
+
+* Architecture is documented.
+* Agent responsibilities are documented.
+* Knowledge-base schema is documented.
+* Bug submission accepts text.
+* Bug submission accepts files.
+* Historical datasets have been collected.
+* Data preprocessing works.
+* Chunking works.
+* Embeddings are generated.
+* Vector database is populated.
+* Sample semantic retrieval works.
+* Tech stack is documented.
+* GitHub repository is available.
+
+---
+
+# 8. Milestone 2
+
+### Sprint Goal
+
+**Build and validate the first operational AI agents.**
+
+### Sprint Backlog
+
+| Task   | Description                        | Priority |
+| ------ | ---------------------------------- | -------- |
+| M2-T1  | Design Triage Agent prompt/schema  | High     |
+| M2-T2  | Implement severity classification  | High     |
+| M2-T3  | Implement priority classification  | High     |
+| M2-T4  | Implement component classification | High     |
+| M2-T5  | Add confidence and reasoning       | High     |
+| M2-T6  | Design Log Analysis Agent          | High     |
+| M2-T7  | Implement exception extraction     | High     |
+| M2-T8  | Implement failure-point extraction | High     |
+| M2-T9  | Implement code-path analysis       | High     |
+| M2-T10 | Integrate Triage Agent             | High     |
+| M2-T11 | Integrate Log Analysis Agent       | High     |
+| M2-T12 | Store structured outputs           | High     |
+| M2-T13 | Create validation dataset          | High     |
+| M2-T14 | Evaluate agent accuracy            | High     |
+| M2-T15 | Prepare validation report          | High     |
+
+### Definition of Done
+
+* Triage Agent works on submitted bugs.
+* Log Analysis Agent works on logs and stack traces.
+* Outputs follow a defined schema.
+* Agents execute automatically after submission.
+* Results are stored.
+* Accuracy is measured on a validation dataset.
+* Evaluation results are documented.
+
+---
+
+# 9. Milestone 3
+
+### Sprint Goal
+
+**Complete the intelligent defect-analysis pipeline.**
+
+### Sprint Backlog
+
+| Task   | Description                            | Priority |
+| ------ | -------------------------------------- | -------- |
+| M3-T1  | Design Root Cause Agent                | High     |
+| M3-T2  | Integrate RAG retrieval                | High     |
+| M3-T3  | Generate root-cause hypotheses         | High     |
+| M3-T4  | Add supporting evidence                | High     |
+| M3-T5  | Implement semantic duplicate detection | High     |
+| M3-T6  | Implement similarity scoring           | High     |
+| M3-T7  | Retrieve historical resolutions        | High     |
+| M3-T8  | Design Remediation Agent               | High     |
+| M3-T9  | Generate fix recommendations           | High     |
+| M3-T10 | Integrate downstream agents            | High     |
+| M3-T11 | Build structured findings UI           | High     |
+| M3-T12 | Perform integration testing            | High     |
+
+### Definition of Done
+
+* Root Cause Agent is operational.
+* Duplicate Detection Agent is operational.
+* Remediation Agent is operational.
+* Historical evidence is displayed.
+* Similarity scores are displayed.
+* Complete analysis results are shown in the findings interface.
+* Integration testing is completed.
+
+---
+
+# 10. Milestone 4
+
+### Sprint Goal
+
+**Complete analytics, knowledge-base growth, end-to-end validation, and final delivery.**
+
+### Sprint Backlog
+
+| Task   | Description                          | Priority |
+| ------ | ------------------------------------ | -------- |
+| M4-T1  | Design analytics metrics             | High     |
+| M4-T2  | Implement defect frequency analytics | High     |
+| M4-T3  | Implement component analytics        | High     |
+| M4-T4  | Implement severity analytics         | High     |
+| M4-T5  | Implement root-cause analytics       | High     |
+| M4-T6  | Implement recurring-theme detection  | High     |
+| M4-T7  | Implement knowledge-base growth      | High     |
+| M4-T8  | Add verified resolved defects        | High     |
+| M4-T9  | Create end-to-end test cases         | High     |
+| M4-T10 | Test different bug types             | High     |
+| M4-T11 | Evaluate duplicate detection         | High     |
+| M4-T12 | Evaluate recommendations             | High     |
+| M4-T13 | Prepare technical documentation      | High     |
+| M4-T14 | Prepare project report               | High     |
+| M4-T15 | Prepare final demonstration          | High     |
+
+### Definition of Done
+
+* Analytics dashboard works.
+* Verified resolved defects can be added to the knowledge base.
+* End-to-end tests are completed.
+* Evaluation metrics are documented.
+* Technical documentation is complete.
+* Project report is complete.
+* At least five distinct bugs are demonstrated through the complete pipeline.
+
+---
+
+# 11. User Stories and Acceptance Criteria
+
+## US-01 — Submit Bug Report
+
+**As a developer, I want to submit a bug report so that the system can analyze the defect.**
+
+### Acceptance Criteria
+
+* User can enter bug text.
+* User can submit the report.
+* System validates the input.
+* Submission receives a unique identifier.
+* Analysis pipeline can access the submission.
+
+---
+
+## US-02 — Upload Error Log
+
+**As a developer, I want to upload an error-log file so that I do not have to manually copy its contents.**
+
+### Acceptance Criteria
+
+* Supported files can be uploaded.
+* File content is extracted.
+* Content is normalized.
+* Extracted content is sent to the analysis pipeline.
+
+---
+
+## US-03 — Automatic Triage
+
+**As a developer, I want the system to automatically classify my defect so that I can understand its urgency.**
+
+### Acceptance Criteria
+
+The system returns:
+
+* Severity
+* Priority
+* Component
+* Confidence
+* Reasoning
+
+---
+
+## US-04 — Analyze Stack Trace
+
+**As a developer, I want stack traces to be analyzed automatically so that I can identify where the failure occurred.**
+
+### Acceptance Criteria
+
+The system identifies:
+
+* Exception
+* Error message
+* Failure point
+* Code path
+
+---
+
+## US-05 — Find Similar Defects
+
+**As a developer, I want to find similar historical defects so that I can reuse previous solutions.**
+
+### Acceptance Criteria
+
+The system returns:
+
+* Top matching defects
+* Similarity scores
+* Historical summaries
+* Previous resolutions
+
+---
+
+## US-06 — Recommend Fix
+
+**As a developer, I want actionable remediation recommendations so that I can resolve the defect faster.**
+
+### Acceptance Criteria
+
+Recommendations should reference:
+
+* Root cause
+* Historical evidence
+* Similar defects
+* Engineering best practices
+
+---
+
+# 12. Sprint Ceremonies
+
+Each sprint follows the following Agile activities.
+
+## Sprint Planning
+
+Activities:
+
+* Review backlog
+* Select sprint stories
+* Prioritize tasks
+* Define sprint goal
+* Estimate effort
+* Identify dependencies
+
+## Daily Stand-up
+
+Each team member reports:
+
+1. What was completed?
+2. What is being worked on?
+3. Are there any blockers?
+
+## Sprint Review
+
+Demonstrate the working increment.
+
+Examples:
+
+* Milestone 1: Submit bug + retrieve historical defects
+* Milestone 2: Automatic triage + log analysis
+* Milestone 3: Root cause + duplicate + remediation
+* Milestone 4: Analytics + complete demonstration
+
+## Sprint Retrospective
+
+Discuss:
+
+* What went well?
+* What did not go well?
+* What should be improved?
+* What technical/process changes are required?
+
+---
+
+# 13. Definition of Ready
+
+A task is ready for development when:
+
+* Requirement is clearly defined.
+* Expected behavior is documented.
+* Acceptance criteria exist.
+* Dependencies are identified.
+* Required datasets/resources are available.
+* The team understands the implementation scope.
+
+---
+
+# 14. Definition of Done
+
+A task is considered complete when:
+
+* Implementation is completed.
+* Code is reviewed.
+* Unit/integration tests are passed where applicable.
+* Acceptance criteria are satisfied.
+* Documentation is updated.
+* Changes are committed to GitHub.
+* No known critical blocker remains.
+
+---
+
+# 15. GitHub Agile Workflow
+
+Recommended branch structure:
+
+```text
+main
+ │
+ ├── develop
+ │     │
+ │     ├── feature/bug-submission
+ │     ├── feature/rag-pipeline
+ │     ├── feature/triage-agent
+ │     ├── feature/log-analysis-agent
+ │     ├── feature/root-cause-agent
+ │     ├── feature/duplicate-detection
+ │     ├── feature/remediation-agent
+ │     └── feature/analytics
+ │
+ └── release
+```
+
+### Recommended Workflow
+
+```text
+Create Issue
+     │
+     ▼
+Create Feature Branch
+     │
+     ▼
+Implement
+     │
+     ▼
+Write Tests
+     │
+     ▼
+Pull Request
+     │
+     ▼
+Code Review
+     │
+     ▼
+Merge
+     │
+     ▼
+Sprint Review
+```
+
+---
+
+# 16. GitHub Issue Template Structure
+
+Each development task should contain:
+
+```text
+Title:
+[Feature] Implement Triage Agent
+
+Description:
+Implement an AI agent that classifies incoming bug reports.
+
+Requirements:
+- Severity classification
+- Priority classification
+- Component classification
+- Confidence score
+- Reasoning
+
+Acceptance Criteria:
+- [ ] Severity is returned
+- [ ] Priority is returned
+- [ ] Component is returned
+- [ ] Confidence is returned
+- [ ] Reasoning is returned
+- [ ] Output follows defined schema
+- [ ] Tests are added
+
+Milestone:
+Milestone 2
+
+Priority:
+High
+```
+
+---
+
+# 17. Risk Management
+
+| Risk                            | Impact | Probability | Mitigation                                            |
+| ------------------------------- | ------ | ----------- | ----------------------------------------------------- |
+| Poor historical dataset quality | High   | Medium      | Data cleaning and validation                          |
+| Irrelevant RAG retrieval        | High   | Medium      | Improve chunking, metadata, embeddings, and retrieval |
+| LLM hallucination               | High   | Medium      | Ground outputs in retrieved evidence                  |
+| Incorrect triage                | High   | Medium      | Use validation datasets and confidence scores         |
+| Incorrect duplicate matching    | High   | Medium      | Evaluate Precision@K and similarity thresholds        |
+| Large dataset processing time   | Medium | Medium      | Batch processing and indexing                         |
+| API cost                        | Medium | Medium      | Optimize prompts and embedding calls                  |
+| Agent orchestration failure     | High   | Low         | Structured state and error handling                   |
+| File parsing issues             | Medium | Medium      | Support defined formats and validate uploads          |
+| Insufficient test coverage      | High   | Medium      | Create test cases throughout each milestone           |
+
+---
+
+# 18. Quality Assurance Strategy
+
+Testing will be performed continuously rather than only at the end of the project.
+
+### Testing Levels
+
+```text
+Unit Testing
+     │
+     ▼
+Integration Testing
+     │
+     ▼
+Agent Testing
+     │
+     ▼
+RAG / Retrieval Testing
+     │
+     ▼
+End-to-End Testing
+     │
+     ▼
+User Acceptance Testing
+```
+
+### Test Areas
+
+* Submission validation
+* File parsing
+* Dataset preprocessing
+* Embedding generation
+* Vector retrieval
+* Agent outputs
+* Agent orchestration
+* Similarity matching
+* Dashboard rendering
+* End-to-end pipeline
+
+---
+
+# 19. Agile Metrics
+
+The project can track the following metrics:
+
+### Development Metrics
+
+* Sprint velocity
+* Completed stories
+* Open issues
+* Closed issues
+* Blocked tasks
+* Defect count
+
+### AI/ML Metrics
+
+* Triage accuracy
+* Log analysis accuracy
+* Retrieval Precision@K
+* Retrieval Recall@K
+* Duplicate detection accuracy
+* Recommendation relevance
+* Root-cause accuracy
+
+### Quality Metrics
+
+* Test pass rate
+* Integration test coverage
+* Critical defects
+* Failed pipeline executions
+
+---
+
+# 20. Release Plan
+
+## Release 1 — Foundation
+
+**Milestone 1**
+
+Includes:
+
+* Bug submission
+* Historical dataset ingestion
+* RAG pipeline
+* Vector database
+* Basic semantic retrieval
+
+---
+
+## Release 2 — Initial AI Analysis
+
+**Milestone 2**
+
+Includes:
+
+* Triage Agent
+* Log Analysis Agent
+* Multi-agent orchestration
+* Validation framework
+
+---
+
+## Release 3 — Intelligent Resolution
+
+**Milestone 3**
+
+Includes:
+
+* Root Cause Agent
+* Duplicate Detection Agent
+* Remediation Agent
+* Structured Findings Dashboard
+
+---
+
+## Release 4 — Final System
+
+**Milestone 4**
+
+Includes:
+
+* Defect analytics
+* Knowledge-base growth
+* End-to-end testing
+* Final documentation
+* Project report
+* Final demonstration
+
+---
+
+# 21. Final Agile Product Increment
+
+At the completion of all milestones, the system should support the following complete workflow:
+
+```text
+┌─────────────────────┐
+│ User submits defect │
+└──────────┬──────────┘
+           ▼
+┌─────────────────────┐
+│ Input preprocessing │
+└──────────┬──────────┘
+           ▼
+┌──────────────────────────────┐
+│ Triage + Log Analysis Agents│
+└──────────────┬───────────────┘
+               ▼
+┌──────────────────────────────┐
+│ Historical RAG Retrieval     │
+└──────────────┬───────────────┘
+               ▼
+       ┌───────┼────────┐
+       ▼       ▼        ▼
+   Root Cause Duplicate Remediation
+     Agent     Agent      Agent
+       │       │        │
+       └───────┼────────┘
+               ▼
+┌──────────────────────────────┐
+│ Structured Findings Dashboard│
+└──────────────┬───────────────┘
+               ▼
+┌──────────────────────────────┐
+│ Defect Pattern Analytics     │
+└──────────────┬───────────────┘
+               ▼
+┌──────────────────────────────┐
+│ Verified Knowledge Base      │
+│ Growth                       │
+└──────────────────────────────┘
+```
+
+---
+
+# 22. Final Success Criteria
+
+The project will be considered successful when:
+
+* A user can submit a bug report or upload an error log.
+* The system automatically performs triage.
+* Stack traces and errors are analyzed.
+* Historical defects can be retrieved through RAG.
+* Probable root causes are generated with supporting evidence.
+* Similar/duplicate defects are identified.
+* Actionable remediation is generated.
+* All results are displayed in a structured interface.
+* Recurring defect patterns can be analyzed.
+* Verified resolutions can improve the knowledge base.
+* The complete pipeline is validated using multiple test cases.
+* At least five distinct bugs are demonstrated through the full system.
+* Technical and project documentation is complete.
+
+---
+
+# 23. Project Deliverables Summary
+
+| Milestone | Primary Deliverables                                                              |
+| --------- | --------------------------------------------------------------------------------- |
+| **M1**    | Research, architecture, Bug Submission Module, Historical Defect KB, RAG pipeline |
+| **M2**    | Triage Agent, Log Analysis Agent, orchestration, validation                       |
+| **M3**    | Root Cause Agent, Duplicate Detection, Remediation, Findings Dashboard            |
+| **M4**    | Analytics, KB growth, E2E testing, documentation, project report, final demo      |
+
+---
+
+# 24. Conclusion
+
+The Agile development process allows the AI-powered defect analysis system to evolve incrementally from a basic submission and knowledge-retrieval platform into a complete multi-agent defect-resolution system.
+
+Each milestone delivers a functional increment:
+
+**Milestone 1 → Foundation**
+
+**Milestone 2 → Automated Analysis**
+
+**Milestone 3 → Intelligent Resolution**
+
+**Milestone 4 → Analytics, Validation & Final Product**
+
+This approach reduces implementation risk, enables continuous validation of AI components, and ensures that every stage contributes directly toward the final defect-analysis platform.

@@ -1,0 +1,21 @@
+Bug ID: BUG-010
+Title: Gemini API Authentication Failed
+Module: AI Analysis
+Severity: Critical
+
+Description:
+This issue was observed during testing of the AI Analysis module.
+
+Steps to Reproduce:
+1. Open the application
+2. Navigate to AI Analysis
+3. Perform the related action
+
+Expected Result:
+Feature should work correctly.
+
+Actual Result:
+The operation failed.
+
+Error:
+401 Unauthorized

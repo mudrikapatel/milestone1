@@ -1,0 +1,21 @@
+Bug ID: BUG-017
+Title: Unauthorized API Access
+Module: Security
+Severity: Critical
+
+Description:
+This issue was observed during testing of the Security module.
+
+Steps to Reproduce:
+1. Open the application
+2. Navigate to Security
+3. Perform the related action
+
+Expected Result:
+Feature should work correctly.
+
+Actual Result:
+The operation failed.
+
+Error:
+JWT token validation failed

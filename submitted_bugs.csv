@@ -1,0 +1,11 @@
+date,bug_id,severity,priority,component,category,root_cause,root_cause_confidence,duplicate_count,recommendation_available
+2026-08-09 17:45:24.347849,BUG-20260809174524361866,Critical,P1,Application Logic,Unknown,Null payment object,41.3,1,True
+2026-08-13 15:07:34.342593,BUG-20260813150734361013,High,P1,Database,Unknown,Database server unavailable,62.32,2,True
+2026-08-13 21:09:29.771641,BUG-20260813210929782819,Critical,P1,Application Logic,Unknown,Null payment object,42.93,2,True
+2026-08-14 10:36:46.899280,BUG-20260814103646903812,High,P1,Database,Unknown,Database server unavailable,47.36,2,True
+2026-08-14 10:50:11.467578,BUG-20260814105011471595,High,P1,Database,Unknown,Database server unavailable,47.36,2,True
+2026-08-14 11:12:30.562842,BUG-20260814111230569155,High,P1,Database,Unknown,Database server unavailable,47.36,2,True
+2026-08-14 11:21:04.704742,BUG-20260814112104708766,High,P1,Database,Unknown,Gateway unavailable,54.26,1,True
+2026-08-14 11:43:02.890575,BUG-20260814114302895573,High,P1,Database,Unknown,Database server unavailable,49.01,3,True
+2026-08-14 16:50:30.985395,BUG-20260814165030991078,Critical,P1,Application Logic,Unknown,Null payment object,49.2,2,True
+2026-08-14 17:03:06.693885,BUG-20260814170306710700,Critical,P1,Application Logic,Unknown,Null payment object,49.2,2,True

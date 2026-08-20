@@ -1,0 +1,21 @@
+Bug ID: BUG-014
+Title: Bug Search Returns Empty
+Module: Search
+Severity: Medium
+
+Description:
+This issue was observed during testing of the Search module.
+
+Steps to Reproduce:
+1. Open the application
+2. Navigate to Search
+3. Perform the related action
+
+Expected Result:
+Feature should work correctly.
+
+Actual Result:
+The operation failed.
+
+Error:
+Index not found

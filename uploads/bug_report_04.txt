@@ -1,0 +1,21 @@
+Bug ID: BUG-004
+Title: Database Connection Failed
+Module: Database
+Severity: Critical
+
+Description:
+This issue was observed during testing of the Database module.
+
+Steps to Reproduce:
+1. Open the application
+2. Navigate to Database
+3. Perform the related action
+
+Expected Result:
+Feature should work correctly.
+
+Actual Result:
+The operation failed.
+
+Error:
+java.sql.SQLException: Communications link failure

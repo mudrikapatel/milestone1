@@ -1,0 +1,44 @@
+Bug ID: BUG-NULL-001
+
+Title: NullPointerException while processing user profile
+
+Description:
+Application crashes when processing a user profile whose address information is missing.
+
+Exception:
+java.lang.NullPointerException: Cannot invoke "String.trim()" because "user.getAddress().getCity()" is null
+
+Stack Trace:
+java.lang.NullPointerException: Cannot invoke "String.trim()" because "user.getAddress().getCity()" is null
+    at com.example.user.UserService.validateAddress(UserService.java:87)
+    at com.example.user.UserService.processUser(UserService.java:52)
+    at com.example.user.UserController.updateUser(UserController.java:41)
+    at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+
+Steps to Reproduce:
+1. Login to the application.
+2. Open User Profile.
+3. Create or edit a user without providing a city.
+4. Click "Update Profile".
+5. Application crashes with NullPointerException.
+
+Expected Result:
+The application should validate the missing city and display a meaningful validation message.
+
+Actual Result:
+Application throws NullPointerException and the request fails with HTTP 500.
+
+Environment:
+Application: User Management Service
+Version: 4.0
+Java: 17
+OS: Windows
+Component: UserService
+Severity: High
+Priority: P1
+
+Suspected Cause:
+The application accesses user.getAddress().getCity().trim() without checking whether the address or city value is null.
+
+Recommended Fix:
+Add null validation before calling trim(), or use appropriate null-safe validation/default handling.

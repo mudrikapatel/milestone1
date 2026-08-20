@@ -1,0 +1,21 @@
+Bug ID: BUG-008
+Title: Invalid Session Handling
+Module: Authentication
+Severity: High
+
+Description:
+This issue was observed during testing of the Authentication module.
+
+Steps to Reproduce:
+1. Open the application
+2. Navigate to Authentication
+3. Perform the related action
+
+Expected Result:
+Feature should work correctly.
+
+Actual Result:
+The operation failed.
+
+Error:
+Session expired unexpectedly

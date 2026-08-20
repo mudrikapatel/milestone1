@@ -1,0 +1,21 @@
+Bug ID: BUG-003
+Title: API Timeout
+Module: Backend API
+Severity: High
+
+Description:
+This issue was observed during testing of the Backend API module.
+
+Steps to Reproduce:
+1. Open the application
+2. Navigate to Backend API
+3. Perform the related action
+
+Expected Result:
+Feature should work correctly.
+
+Actual Result:
+The operation failed.
+
+Error:
+HTTP 504 Gateway Timeout
