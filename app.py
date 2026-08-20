@@ -1,6 +1,10 @@
 import streamlit as st
 import requests
-BACKEND_URL = st.secrets["BACKEND_URL"]
+import os
+BACKEND_URL = os.getenv(
+    "BACKEND_URL",
+    "http://127.0.0.1:8000"
+)
 import pandas as pd
 import json
 import io
