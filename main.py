@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import os
 import traceback
 import uuid
-from orchestrator import analyze
+from orchestrator import analyze_bug
 
 
 app = FastAPI(
@@ -76,7 +76,7 @@ async def analyze(
 
             f.write(content)
 
-        result = analyze(filepath)
+        result = analyze_bug(filepath)
 
         if not isinstance(result, dict):
 
